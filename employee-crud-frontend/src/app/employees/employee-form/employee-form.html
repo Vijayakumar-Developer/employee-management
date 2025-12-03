@@ -1,0 +1,42 @@
+<div>
+  <h2>{{ id ? 'Edit Employee' : 'Add Employee' }}</h2>
+
+  <form [formGroup]="employeeForm" (ngSubmit)="submit()">
+    <div>
+      <label>First name</label>
+      <input formControlName="firstName" />
+      <div *ngIf="employeeForm.get('firstName')?.touched && employeeForm.get('firstName')?.invalid">
+        First name is required
+      </div>
+    </div>
+
+    <div>
+      <label>Last name</label>
+      <input formControlName="lastName" />
+      <div *ngIf="employeeForm.get('lastName')?.touched && employeeForm.get('lastName')?.invalid">
+        Last name is required
+      </div>
+    </div>
+
+    <div>
+      <label>Email</label>
+      <input formControlName="email" />
+      <div *ngIf="employeeForm.get('email')?.touched && employeeForm.get('email')?.invalid">
+        Valid email required
+      </div>
+    </div>
+
+    <div>
+      <label>Salary</label>
+      <input type="number" formControlName="salary" />
+      <div *ngIf="employeeForm.get('salary')?.touched && employeeForm.get('salary')?.invalid">
+        Salary must be >= 0
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button type="submit">{{ id ? 'Update' : 'Create' }}</button>
+      <button type="button" (click)="cancel()">Cancel</button>
+    </div>
+  </form>
+</div>
