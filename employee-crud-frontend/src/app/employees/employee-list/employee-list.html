@@ -1,30 +1,32 @@
-<div>
-  <div class="toolbar">
-    <button (click)="addNew()">Add Employee</button>
-  </div>
+<div class="page-container">
+  <h1>Employee Management</h1>
 
-  <div *ngIf="loading">Loading...</div>
-  <div *ngIf="error" class="error">{{ error }}</div>
+  <button class="btn primary" (click)="addEmployee()">➕ Add Employee</button>
 
-  <table *ngIf="!loading && employees.length > 0" class="employee-table">
-    <thead>
-      <tr><th>ID</th><th>Name</th><th>Email</th><th>Salary</th><th>Actions</th></tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let e of employees">
-        <td>{{ e.id }}</td>
-        <td>{{ e.firstName }} {{ e.lastName }}</td>
-        <td>{{ e.email }}</td>
-        <td>{{ e.salary | number:'1.0-2' }}</td>
-        <td>
-          <button (click)="editEmployee(e.id)">Edit</button>
-          <button (click)="deleteEmployee(e.id)">Delete</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Salary</th>
+          <th style="width: 150px;">Actions</th>
+        </tr>
+      </thead>
 
-  <div *ngIf="!loading && employees.length === 0">
-    No employees found.
+      <tbody>
+        <tr *ngFor="let e of employees">
+          <td>{{ e.id }}</td>
+          <td>{{ e.firstName }} {{ e.lastName }}</td>
+          <td>{{ e.email }}</td>
+          <td>{{ e.salary | number }}</td>
+          <td class="actions">
+            <button class="btn edit" (click)="editEmployee(e.id)">Edit</button>
+            <button class="btn delete" (click)="deleteEmployee(e.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>

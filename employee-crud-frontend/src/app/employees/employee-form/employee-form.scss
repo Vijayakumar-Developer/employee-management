@@ -1,5 +1,109 @@
-form { display: grid; gap: 12px; max-width: 600px; }
-label { display: block; font-weight: 600; margin-bottom: 4px; }
-input { padding: 8px; width: 100%; box-sizing: border-box; }
-.buttons { margin-top: 1rem; }
-div > div { color: red; font-size: 0.9rem; }
+/* Page background */
+.page-container {
+  background: #f4f6f9;
+  min-height: 100vh;
+  padding: 40px;
+}
+
+/* Title */
+.title {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+/* Card container */
+.form-card {
+  max-width: 700px;
+  margin: auto;
+  background: #ffffff;
+  padding: 30px 40px;
+  border-radius: 16px;
+  box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Back Button */
+.btn-back {
+  background: #ddd;
+  color: #333;
+  padding: 8px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 10px;
+
+  &:hover {
+    background: #ccc;
+  }
+}
+
+.form-title {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 26px;
+  font-weight: 600;
+}
+
+/* Inputs */
+input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+
+  &:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+  }
+}
+
+/* Error Messages */
+.error {
+  margin: -5px 0 10px 5px;
+  font-size: 13px;
+  color: #d9534f;
+}
+
+/* Button row */
+.btn-row {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* Buttons */
+.btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+  min-width: 120px;
+}
+
+.primary {
+  background: #007bff;
+  color: white;
+
+  &:disabled {
+    background: #9ec8ff;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    background: #0056b3;
+  }
+}
+
+.danger {
+  background: #6c757d;
+  color: white;
+
+  &:hover {
+    background: #545b62;
+  }
+}

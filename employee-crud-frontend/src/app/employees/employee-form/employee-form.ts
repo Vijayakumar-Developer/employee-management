@@ -14,21 +14,22 @@ import { Employee } from '../employee.model';
 })
 export class EmployeeForm implements OnInit {
 
-  employeeForm: any; // <-- initialize later
+  form: any; // <-- initialize later
   id?: number;
   loading = false;
   error = '';
+  isEdit = false;
 
   constructor(
     private fb: FormBuilder,
     private service: EmployeeService,
     private router: Router,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     // Initialize form here, AFTER fb is available
-    this.employeeForm = this.fb.group({
+    this.form = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -37,6 +38,7 @@ export class EmployeeForm implements OnInit {
 
     const idParam = this.route.snapshot.paramMap.get('id');
     this.id = idParam ? Number(idParam) : undefined;
+    this.isEdit = !!this.id;
 
     if (this.id) {
       this.load(this.id);
@@ -47,7 +49,7 @@ export class EmployeeForm implements OnInit {
     this.loading = true;
     this.service.getById(id).subscribe({
       next: (emp: Employee) => {
-        this.employeeForm.patchValue(emp);
+        this.form.patchValue(emp);
         this.loading = false;
       },
       error: (err) => {
@@ -57,13 +59,13 @@ export class EmployeeForm implements OnInit {
     });
   }
 
-  submit(): void {
-    if (this.employeeForm.invalid) {
-      this.employeeForm.markAllAsTouched();
+  onSubmit(): void {
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
       return;
     }
 
-    const payload = this.employeeForm.value as Employee;
+    const payload = this.form.value as Employee;
 
     if (this.id) {
       this.service.update(this.id, payload).subscribe({
@@ -78,7 +80,8 @@ export class EmployeeForm implements OnInit {
     }
   }
 
-  cancel(): void {
+
+  goBack(): void {
     this.router.navigate(['/']);
   }
 }

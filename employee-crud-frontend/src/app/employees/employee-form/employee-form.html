@@ -1,42 +1,47 @@
-<div>
-  <h2>{{ id ? 'Edit Employee' : 'Add Employee' }}</h2>
+<div class="page-container">
+  <h1 class="title">Employee Management</h1>
 
-  <form [formGroup]="employeeForm" (ngSubmit)="submit()">
-    <div>
-      <label>First name</label>
-      <input formControlName="firstName" />
-      <div *ngIf="employeeForm.get('firstName')?.touched && employeeForm.get('firstName')?.invalid">
+  <div class="form-card">
+    <button class="btn-back" (click)="goBack()">⬅ Back</button>
+
+    <h2 class="form-title">{{ isEdit ? "Edit Employee" : "Add Employee" }}</h2>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <!-- First Name -->
+      <label>First Name</label>
+      <input type="text" formControlName="firstName" />
+      <p class="error" *ngIf="form.get('firstName')?.touched && form.get('firstName')?.invalid">
         First name is required
-      </div>
-    </div>
+      </p>
 
-    <div>
-      <label>Last name</label>
-      <input formControlName="lastName" />
-      <div *ngIf="employeeForm.get('lastName')?.touched && employeeForm.get('lastName')?.invalid">
+      <!-- Last Name -->
+      <label>Last Name</label>
+      <input type="text" formControlName="lastName" />
+      <p class="error" *ngIf="form.get('lastName')?.touched && form.get('lastName')?.invalid">
         Last name is required
-      </div>
-    </div>
+      </p>
 
-    <div>
+      <!-- Email -->
       <label>Email</label>
-      <input formControlName="email" />
-      <div *ngIf="employeeForm.get('email')?.touched && employeeForm.get('email')?.invalid">
-        Valid email required
-      </div>
-    </div>
+      <input type="email" formControlName="email" />
+      <p class="error" *ngIf="form.get('email')?.touched && form.get('email')?.invalid">
+        Enter a valid email
+      </p>
 
-    <div>
+      <!-- Salary -->
       <label>Salary</label>
       <input type="number" formControlName="salary" />
-      <div *ngIf="employeeForm.get('salary')?.touched && employeeForm.get('salary')?.invalid">
-        Salary must be >= 0
-      </div>
-    </div>
+      <p class="error" *ngIf="form.get('salary')?.touched && form.get('salary')?.invalid">
+        Salary must be greater than 0
+      </p>
 
-    <div class="buttons">
-      <button type="submit">{{ id ? 'Update' : 'Create' }}</button>
-      <button type="button" (click)="cancel()">Cancel</button>
-    </div>
-  </form>
+      <div class="btn-row">
+        <button class="btn primary" type="submit" [disabled]="form.invalid">
+          {{ isEdit ? "Update" : "Create" }}
+        </button>
+
+        <button class="btn danger" type="button" (click)="goBack()">Cancel</button>
+      </div>
+    </form>
+  </div>
 </div>
