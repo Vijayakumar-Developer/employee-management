@@ -1,4 +1,4 @@
-package com.example.exception;
+package com.example.employee.exception;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

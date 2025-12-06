@@ -1,10 +1,11 @@
-package com.example.service;
+package com.example.employee.service;
 
 
-import com.example.dto.EmployeeDTO;
-import com.example.entity.Employee;
-import com.example.exception.ResourceNotFoundException;
-import com.example.repository.EmployeeRepository;
+import com.example.employee.dto.EmployeeDTO;
+import com.example.employee.enitity.Employee;
+import com.example.employee.exception.ResourceNotFoundException;
+import com.example.employee.repoistory.EmployeeRepository;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

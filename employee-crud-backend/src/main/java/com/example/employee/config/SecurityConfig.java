@@ -25,7 +25,7 @@
 //        return http.build();
 //    }
 //}
-package com.example.config;
+package com.example.employee.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -39,12 +39,12 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http
-                .csrf(csrf -> csrf.disable())          // Disable CSRF
-                .authorizeHttpRequests(auth -> auth
-                        .anyRequest().permitAll()      // Allow ALL requests
-                )
-                .formLogin(form -> form.disable())      // Disable login page
-                .httpBasic(basic -> basic.disable());   // Disable basic auth
+            .csrf(csrf -> csrf.disable())
+            .authorizeHttpRequests(auth -> auth
+                .anyRequest().permitAll()
+            )
+            .formLogin(form -> form.disable())
+            .httpBasic(basic -> basic.disable());
 
         return http.build();
     }

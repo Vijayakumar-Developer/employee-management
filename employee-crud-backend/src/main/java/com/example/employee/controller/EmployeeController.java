@@ -1,7 +1,8 @@
-package com.example.Controllers;
+package com.example.employee.controller;
 
-import com.example.dto.EmployeeDTO;
-import com.example.service.EmployeeService;
+import com.example.employee.dto.EmployeeDTO;
+import com.example.employee.service.EmployeeService;
+
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
